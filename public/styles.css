@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+#root, #__next {
+    isolation: isolate;
+}
+
+:root {
+    --text-dark-desaturated-blue: hsl(238, 29%, 16%);
+    --text-red: hsl(14, 88%, 65%);
+    --background-violet: hsl(273, 75%, 66%);
+    --background-blue: hsl(240, 73%, 65%);
+    --text-very-dark-greyish-blue: hsl(237, 12%, 33%);
+    --text-dark-greyish-blue: hsl(240, 6%, 50%);
+    --divider: hsl(240, 5%, 91%);
+}
+
+/* For portrait phones */
+
+.container {
+    min-height: 100dvh;
+    background: linear-gradient(var(--background-violet), var(--background-blue));
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    padding-top: 5dvh;
+}
+
+.wrapper {
+    margin: 7em 0em;
+    width: 90%;
+    background-color: #fff;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr;
+    border-radius: 15px;
+    box-shadow: 0 50px 30px -10px hsl(240, 42%, 52%);
+}
+
+.image-holder {
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    position: relative;
+}
+
+.image-holder img:nth-child(1) {
+    width: 70%;
+    position: absolute;
+    transform: translateY(-60%);
+}
+
+.image-holder img:nth-child(2) {
+    width: 70%;
+    position: absolute;
+}
+
+.content-container {
+    font-size: clamp(1.5rem, min(8dvw, 8dvh), 2.5rem);
+    padding-bottom: 5dvh;
+}
+
+.content-container h1 {
+    text-align: center;
+    color: var(--text-dark-desaturated-blue);
+    font-weight: 700;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 0.1fr;
+    border-bottom: thin solid var(--divider);
+    gap: 0.3em;
+    padding: 0.5em 0em;
+    margin: 0em 0.5em;
+    position: relative;
+}
+
+.heading {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    font-size: 50%;
+    font-weight: 400;
+    color: var(--text-very-dark-greyish-blue);
+}
+
+.content img {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    align-self: center;
+    justify-self: center;
+}
+
+.detail {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    font-size: 50%;
+    color: var(--text-dark-greyish-blue);
+}
+
+/* For landscape phones */
+
+@media (width >= 35em) and (height <= 27em) and (orientation: landscape) {
+    .wrapper {
+        margin: 7em 0em;
+        width: 50%;
+    }
+}
+
+
+/* For portrait tablets */
+
+@media (width >= 44.5em) and (orientation: portrait) {
+    .wrapper {
+        margin: 10em 0em;
+        grid-template-rows: 1fr 2fr;
+        width: 80%;
+    }
+}
+
+
+/* For landscape tablets */
+
+@media (width >= 62em) and (height <= 64em) and (orientation: landscape) {
+    .wrapper {
+        margin: 10em 0em;
+        grid-template-rows: 1fr 2fr;
+        width: 50%;
+    }
+}
+
+
+/* laptops 1200px and up */
+
+@media (width >= 75em) {
+
+    .container {
+        padding-top: 0;
+    }
+
+    .wrapper {
+        margin: 0;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        width: 70%;
+    }
+
+    .desktop-image-holder {
+        display: grid;
+        position: relative;
+    }
+
+    .desktop-image-holder div {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .desktop-image-holder div img {
+        width: 100%;
+        position: absolute;
+    }
+
+    .desktop-image-holder img:nth-child(2), .desktop-image-holder img:nth-child(3) {
+        position: absolute;
+    }
+
+    .desktop-image-holder div img:nth-child(2) {
+        bottom: 0;
+        transform: translate(-68%, -12%) scale(2);
+    }
+
+    .desktop-image-holder div img:nth-child(1) {
+        width: 100%;
+        transform: translate(-18%, 10%);
+        z-index: 1;
+    }
+
+    .box {
+        position: absolute;
+        transform: translate(-49%, 95%);
+        z-index: 2;
+    }
+
+
+
+    /* .image-holder img:nth-child(2) {
+        width: 100%;
+        top: 50%;
+        transform: translate(-20%, -50%);
+    } */
+}
+
+
+/* desktops 2500px and up */
+
+@media (width >= 156.25em) {}
