@@ -15,7 +15,9 @@ const ImageHolder = () => {
           <img src="images/illustration-woman-online-desktop.svg" />
           <img src="images/bg-pattern-desktop.svg" />
         </div>
-        <img src="images/illustration-box-desktop.svg" className="box" />
+        <span className="box">
+          <img src="images/illustration-box-desktop.svg" />
+        </span>
       </div>
     );
   }

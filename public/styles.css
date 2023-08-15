@@ -41,8 +41,6 @@ p, h1, h2, h3, h4, h5, h6 {
     --divider: hsl(240, 5%, 91%);
 }
 
-/* For portrait phones */
-
 .container {
     min-height: 100dvh;
     background: linear-gradient(var(--background-violet), var(--background-blue));
@@ -125,17 +123,12 @@ p, h1, h2, h3, h4, h5, h6 {
     color: var(--text-dark-greyish-blue);
 }
 
-/* For landscape phones */
-
 @media (width >= 35em) and (height <= 27em) and (orientation: landscape) {
     .wrapper {
         margin: 7em 0em;
         width: 50%;
     }
 }
-
-
-/* For portrait tablets */
 
 @media (width >= 44.5em) and (orientation: portrait) {
     .wrapper {
@@ -145,9 +138,6 @@ p, h1, h2, h3, h4, h5, h6 {
     }
 }
 
-
-/* For landscape tablets */
-
 @media (width >= 62em) and (height <= 64em) and (orientation: landscape) {
     .wrapper {
         margin: 10em 0em;
@@ -155,9 +145,6 @@ p, h1, h2, h3, h4, h5, h6 {
         width: 50%;
     }
 }
-
-
-/* laptops 1200px and up */
 
 @media (width >= 75em) {
 
@@ -169,11 +156,11 @@ p, h1, h2, h3, h4, h5, h6 {
         margin: 0;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
-        width: 70%;
+        width: 70dvw;
+        border-radius: 20px;
     }
 
     .desktop-image-holder {
-        display: grid;
         position: relative;
     }
 
@@ -184,42 +171,58 @@ p, h1, h2, h3, h4, h5, h6 {
         overflow: hidden;
     }
 
-    .desktop-image-holder div img {
-        width: 100%;
-        position: absolute;
-    }
-
-    .desktop-image-holder img:nth-child(2), .desktop-image-holder img:nth-child(3) {
-        position: absolute;
-    }
-
     .desktop-image-holder div img:nth-child(2) {
-        bottom: 0;
-        transform: translate(-68%, -12%) scale(2);
+        position: absolute;
+        width: 100%;
+        transform: translate(-65%, -12%) scale(2);
     }
 
     .desktop-image-holder div img:nth-child(1) {
-        width: 100%;
-        transform: translate(-18%, 10%);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) translateX(-15%);
         z-index: 1;
+        width: 100%;
     }
 
     .box {
         position: absolute;
-        transform: translate(-49%, 95%);
         z-index: 2;
+        top: 60%;
+        transform: translateY(-50%) translateX(-50%);
+        width: 40%;
     }
 
-
-
-    /* .image-holder img:nth-child(2) {
+    .box img {
         width: 100%;
-        top: 50%;
-        transform: translate(-20%, -50%);
-    } */
+    }
+
+    .content-container {
+        padding: 1.5em 0em;
+        padding-right: 2em;
+        font-size: clamp(1.5rem, min(5dvw, 5dvh), 8rem);
+    }
+
+    .content-container h1 {
+        text-align: left;
+    }
+
+    .content {
+        margin: 0;
+    }
+
+    .content img:hover, .content .heading:hover {
+        cursor: pointer;
+        color: var(--text-red);
+    }  
 }
 
+@media (width >= 156.25em) {
+    .wrapper {
+        min-height: 50dvh;
+    }
 
-/* desktops 2500px and up */
-
-@media (width >= 156.25em) {}
+    .content img {
+        scale: 3;
+    }
+}

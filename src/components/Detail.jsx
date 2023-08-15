@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { gsap } from "gsap";
 
 const arrowAnime = {
   hidden: {
@@ -21,7 +22,29 @@ const variants = {
   },
 };
 
-const Detail = (props) => {
+const Detail = () => {
+  useEffect(() => {
+    const onPageLoad = () => {
+      let animation = gsap.to(".box", {
+        paused: true,
+        left: "-5%",
+      });
+
+      document.querySelectorAll(".heading").forEach((x) => {
+        x.addEventListener("mouseenter", () => animation.play());
+      });
+      document.querySelectorAll(".heading").forEach((x) => {
+        x.addEventListener("mouseleave", () => animation.reverse());
+      });
+    };
+    if (document.readyState === "complete") {
+      onPageLoad();
+    } else {
+      window.addEventListener("load", onPageLoad, false);
+      return () => window.removeEventListener("load", onPageLoad);
+    }
+  }, []);
+
   const [selected, setSelected] = useState(null);
 
   const toggle = (i) => {
@@ -37,14 +60,15 @@ const Detail = (props) => {
         <div className="content">
           <div
             className="heading"
+            onClick={() => toggle(i)}
             style={{ fontWeight: selected === i ? "700" : "400" }}
           >
             {item.heading}
           </div>
           <motion.img
             src="images/icon-arrow-down.svg"
-            onClick={() => toggle(i)}
             whileHover={{ scale: 1.5 }}
+            onClick={() => toggle(i)}
             variants={arrowAnime}
             initial="hidden"
             animate={selected === i ? "visible" : "hidden"}
